@@ -9,7 +9,8 @@ const routes = [
     component: Home
   },
   {
-    path: '/BrandList/:name',
+    // path: '/BrandList/:name',
+    path: '/BrandList',
     name: 'BrandList',
     component: BrandList,
     props: true
