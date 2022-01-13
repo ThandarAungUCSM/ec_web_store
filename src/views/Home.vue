@@ -2,7 +2,12 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    {{productItems}}
+    
+    <!-- {{testingItems}}<br><br> -->
+    <!-- {{teststateItem}}<br><br>
+    {{testingItem}}<br><br>
+    {{$store.state.count}} -->
+    <button @click="getTesting('1')">click Action</button>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/brandList">Brands</router-link> |
@@ -14,19 +19,32 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Home',
   components: {
     // HelloWorld
   },
   computed: {
+    ...mapState({
+      testingItem: state => state.testingStore.testingItem ? state.testingStore.testingItem : 'data null'
+    }),
     ...mapGetters([
-      'productItems'
-    ])
+      'testingItems',
+      // 'testingItemById'
+    ]),
+    teststateItem() {
+      return this.$store.state.testingStore.testingItem;
+    }
   },
   created() {
-    this.$store.dispatch("getProducts")
+      this.$store.dispatch("getTestings")
+      this.$store.dispatch("getTesting", '1').then(res => {
+          console.log(res)
+      })
+  },
+  methods: {
+      ...mapActions(["getTesting"])
   }
 }
 </script>
