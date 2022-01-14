@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
     
-    <!-- {{testingItems}}<br><br> -->
-    <!-- {{teststateItem}}<br><br>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{testingItems}}<br><br>
+    {{teststateItem}}<br><br>
     {{testingItem}}<br><br>
-    {{$store.state.count}} -->
-    <button @click="getTesting('1')">click Action</button>
+    {{$store.state.count}}
+    <button @click="getTesting('1')">click Action</button> -->
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/brandList">Brands</router-link> |
@@ -18,12 +18,14 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
+import Header from '@/components/Header.vue'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    // HelloWorld,
+    Header
   },
   computed: {
     ...mapState({
